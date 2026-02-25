@@ -221,15 +221,31 @@ def save_current_ratings():
 # ══════════════════════════════════════════════
 # CHARGEMENT DU MODÈLE
 # ══════════════════════════════════════════════
-@st.cache_resource
+MODEL_PATH     = "model_als_custom.pkl1"
+GDRIVE_FILE_ID = "1ZT_K3OWktNgVsRo4shwW-MuSWkGThoN1"
+
+@st.cache_resource(show_spinner="⏳ Chargement du modèle…")
 def load_model():
-    with open('https://drive.google.com/file/d/1ZT_K3OWktNgVsRo4shwW-MuSWkGThoN1/view?usp=drive_link', 'rb') as f:
+    # Sur Streamlit Cloud : télécharge le .pkl depuis Google Drive si absent
+    if not os.path.exists(MODEL_PATH):
+        try:
+            import gdown
+            gdown.download(
+                f"https://drive.google.com/uc?id={GDRIVE_FILE_ID}",
+                MODEL_PATH,
+                quiet=False,
+                fuzzy=True,
+            )
+        except Exception as e:
+            st.error(f"❌ Impossible de télécharger le modèle depuis Drive : {e}")
+            st.stop()
+    with open(MODEL_PATH, 'rb') as f:
         return pickle.load(f)
 
 try:
     model = load_model()
-except FileNotFoundError:
-    st.error("⚠️ Modèle introuvable. Lance d'abord : `python train.py`")
+except Exception as e:
+    st.error(f"⚠️ Erreur lors du chargement du modèle : {e}")
     st.stop()
 
 U             = model['U']
