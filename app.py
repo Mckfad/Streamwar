@@ -221,12 +221,11 @@ def save_current_ratings():
 # ══════════════════════════════════════════════
 # CHARGEMENT DU MODÈLE
 # ══════════════════════════════════════════════
-MODEL_PATH     = "model_als_custom.pkl1"
-GDRIVE_FILE_ID = "1ZT_K3OWktNgVsRo4shwW-MuSWkGThoN1"
+MODEL_PATH     = "model_als_custom.pkl"
+GDRIVE_FILE_ID = "1vcsDvx3Fy7HfvDvxgpyn4o_CRLYu9ZRR"
 
 @st.cache_resource(show_spinner="⏳ Chargement du modèle…")
 def load_model():
-    # Sur Streamlit Cloud : télécharge le .pkl depuis Google Drive si absent
     if not os.path.exists(MODEL_PATH):
         try:
             import gdown
@@ -241,13 +240,6 @@ def load_model():
             st.stop()
     with open(MODEL_PATH, 'rb') as f:
         return pickle.load(f)
-
-try:
-    model = load_model()
-except Exception as e:
-    st.error(f"⚠️ Erreur lors du chargement du modèle : {e}")
-    st.stop()
-
 U             = model['U']
 V             = model['V']
 movie_map     = model['movie_map']
