@@ -271,7 +271,11 @@ def cold_start_diverse(top_k: int = 12) -> list:
 # ══════════════════════════════════════════════
 # TMDB
 # ══════════════════════════════════════════════
-TMDB_API_KEY = "9dfe21ff5755005c0f890421d2fadc02"
+TMDB_API_KEY = ""
+try:
+    TMDB_API_KEY = st.secrets["TMDB_API_KEY"]
+except Exception:
+    pass
 
 
 IMG_BASE = "https://image.tmdb.org/t/p/w342"
