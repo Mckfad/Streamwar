@@ -223,7 +223,7 @@ def save_current_ratings():
 # ══════════════════════════════════════════════
 @st.cache_resource
 def load_model():
-    with open('model_als_custom.pkl1', 'rb') as f:
+    with open('https://drive.google.com/file/d/1ZT_K3OWktNgVsRo4shwW-MuSWkGThoN1/view?usp=drive_link', 'rb') as f:
         return pickle.load(f)
 
 try:
