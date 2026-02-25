@@ -221,7 +221,7 @@ def save_current_ratings():
 # ══════════════════════════════════════════════
 # CHARGEMENT DU MODÈLE
 # ══════════════════════════════════════════════
-MODEL_PATH     = "model_als_custom.pkl1"
+MODEL_PATH     = "Copie de model_als_custom.pkl1"
 GDRIVE_FILE_ID = "1ZT_K3OWktNgVsRo4shwW-MuSWkGThoN1"
 
 @st.cache_resource(show_spinner="⏳ Chargement du modèle…")
