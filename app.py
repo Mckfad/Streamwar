@@ -221,7 +221,14 @@ def save_current_ratings():
 # ══════════════════════════════════════════════
 # CHARGEMENT DU MODÈLE
 # ══════════════════════════════════════════════
-MODEL_PATH     = "Copie de model_als_custom.pkl1"
+#@st.cache_resource
+#def load_model():
+#    with open('model_als_custom.pkl1', 'rb') as f:
+#        return pickle.load(f)
+
+
+
+MODEL_PATH     = "model_als_custom.pkl"
 GDRIVE_FILE_ID = "1vcsDvx3Fy7HfvDvxgpyn4o_CRLYu9ZRR"
 
 @st.cache_resource(show_spinner="⏳ Chargement du modèle…")
@@ -240,6 +247,13 @@ def load_model():
             st.stop()
     with open(MODEL_PATH, 'rb') as f:
         return pickle.load(f)
+
+try:
+    model = load_model()
+except FileNotFoundError:
+    st.error("⚠️ Modèle introuvable. Lance d'abord : `python train.py`")
+    st.stop()
+
 U             = model['U']
 V             = model['V']
 movie_map     = model['movie_map']
@@ -279,11 +293,7 @@ def cold_start_diverse(top_k: int = 12) -> list:
 # ══════════════════════════════════════════════
 # TMDB
 # ══════════════════════════════════════════════
-TMDB_API_KEY = ""
-try:
-    TMDB_API_KEY = st.secrets["TMDB_API_KEY"]
-except Exception:
-    pass
+TMDB_API_KEY = "9dfe21ff5755005c0f890421d2fadc02"
 
 
 IMG_BASE = "https://image.tmdb.org/t/p/w342"
