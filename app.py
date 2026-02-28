@@ -239,7 +239,7 @@ def save_current_ratings():
 
 
 MODEL_PATH     = "model_als_custom.pkl"
-GDRIVE_FILE_ID = "1vcsDvx3Fy7HfvDvxgpyn4o_CRLYu9ZRR"
+GDRIVE_FILE_ID = "1ZT_K3OWktNgVsRo4shwW-MuSWkGThoN1"
 
 @st.cache_resource(show_spinner="⏳ Chargement du modèle…")
 def load_model():
