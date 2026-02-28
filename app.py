@@ -228,6 +228,16 @@ def save_current_ratings():
 
 
 
+# ══════════════════════════════════════════════
+# CHARGEMENT DU MODÈLE
+# ══════════════════════════════════════════════
+#@st.cache_resource
+#def load_model():
+#    with open('model_als_custom.pkl1', 'rb') as f:
+#        return pickle.load(f)
+
+
+
 MODEL_PATH     = "model_als_custom.pkl"
 GDRIVE_FILE_ID = "1vcsDvx3Fy7HfvDvxgpyn4o_CRLYu9ZRR"
 
