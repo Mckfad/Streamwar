@@ -221,23 +221,6 @@ def save_current_ratings():
 # ══════════════════════════════════════════════
 # CHARGEMENT DU MODÈLE
 # ══════════════════════════════════════════════
-#@st.cache_resource
-#def load_model():
-#    with open('model_als_custom.pkl1', 'rb') as f:
-#        return pickle.load(f)
-
-
-
-# ══════════════════════════════════════════════
-# CHARGEMENT DU MODÈLE
-# ══════════════════════════════════════════════
-#@st.cache_resource
-#def load_model():
-#    with open('model_als_custom.pkl1', 'rb') as f:
-#        return pickle.load(f)
-
-
-
 MODEL_PATH     = "model_als_custom.pkl"
 GDRIVE_FILE_ID = "1ZT_K3OWktNgVsRo4shwW-MuSWkGThoN1"
 
@@ -305,7 +288,7 @@ def cold_start_diverse(top_k: int = 12) -> list:
 # ══════════════════════════════════════════════
 TMDB_API_KEY = ""
 try:
-    TMDB_API_KEY = st.secrets["TMDB_API_KEY"]  # ← lit depuis secrets.toml ou l'interface cloud
+    TMDB_API_KEY = st.secrets["TMDB_API_KEY"]  # ← lit depuis secrets.toml 
 except Exception:
     pass
 
